@@ -10,7 +10,6 @@ function main(){
   $name=$_GET['name'];
   $prefecture=$_GET['prefecture'];
   if($line==NULL && $name==NULL){
-    //print "line or station name is must item.\n";
     $geo[0]=-1;
   } else {
     $geo=sta2geo($line,$name,$prefecture);
@@ -21,7 +20,6 @@ function main(){
     }
   }
   //make JSON
-  //$json_status=array("status" => $geo[0]);
   for($i=0;$i<count($geo[1]);$i++){
     $json_data[$i]=array(
       "lat" => $geo[1][$i],
@@ -35,7 +33,6 @@ function main(){
       "postal" => $geo[6][$i]
     );
   }
-  //$station=$json_data;
   $json_all=array("status"=>$geo[0],"station" => $json_data);
   $encode=json_encode($json_all);
   echo $encode;
